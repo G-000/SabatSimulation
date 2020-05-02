@@ -92,7 +92,7 @@ static void FLog(const char *const &_func, const char *const &_log,
 namespace utils {
 
 constexpr auto _participalAmmount = 100000;
-constexpr int NOBINS = 262144;
+constexpr int NOBINS = 262144 / 2;
 
 namespace material {
 
@@ -109,10 +109,10 @@ static const G4String bottomName = "SabatBottom";
 static const G4String targetName = "SabatTarget";
 static const G4String DetectorName = "SabatDetector";
 static const G4String DetectorSDName = "SabatDetectorSD";
-static const G4String EnviromentName = "SabatEnviroment";
+static const G4String EnviromentName = "Envelope";
 
-constexpr G4double sourceZpos = 20. * cm;
-constexpr G4double sourceXPos = 50. * cm;
+constexpr G4double sourceZpos = 10. * cm;
+constexpr G4double sourceXPos = 30. * cm;
 constexpr G4double sourceYPos = 0;
 
 }  // namespace sabat
@@ -190,4 +190,16 @@ static GeometryProp getGeomProperty(const T *value) {
 }
 }  // namespace geometry
 
+class counter {
+ public:
+  counter(const int amount);
+  const counter &operator=(const counter &value);
+  bool operator==(const int amount) const;
+  int &operator--();
+  int &at();
+  int &update(const int value);
+
+ private:
+  int m_amount = 0;
+};
 }  // namespace utils
