@@ -92,7 +92,8 @@ static void FLog(const char *const &_func, const char *const &_log,
 namespace utils {
 
 constexpr auto _participalAmmount = 100000;
-constexpr int NOBINS = 262144 / 2;
+constexpr int NOBINS = 1024 * 8;  // * 256 / 2;
+;
 
 namespace material {
 
@@ -111,7 +112,7 @@ static const G4String DetectorName = "SabatDetector";
 static const G4String DetectorSDName = "SabatDetectorSD";
 static const G4String EnviromentName = "Envelope";
 
-constexpr G4double sourceZpos = 10. * cm;
+constexpr G4double sourceZpos = 20. * cm;
 constexpr G4double sourceXPos = 30. * cm;
 constexpr G4double sourceYPos = 0;
 

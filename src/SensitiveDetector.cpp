@@ -4,6 +4,7 @@
 
 #include <fstream>
 #include <iostream>
+#include <thread>
 
 #include <G4Step.hh>
 #include "G4SystemOfUnits.hh"
@@ -44,8 +45,10 @@ G4bool SensitiveDetector::ProcessHits(G4Step* step,
   }
   // Kill pariciple after target
   //  step->GetTrack()->SetTrackStatus(fStopAndKill);
-  if (m_counter->at() == 0) {
-    utils::Utils::saveData(histogram, HIST_MIN, HIST_MAX);
+  if (m_counter->at() <= 0) {
+    std::thread saveThread(utils::Utils::saveData, histogram, HIST_MIN,
+                           HIST_MAX);
+    saveThread.join();
     m_counter->update(utils::_participalAmmount);
   }
   return true;
@@ -53,6 +56,5 @@ G4bool SensitiveDetector::ProcessHits(G4Step* step,
 
 SensitiveDetector::~SensitiveDetector() {
   utils::Utils::saveData(histogram, HIST_MIN, HIST_MAX);
-  utils::Utils::squashData();
   LogInfo::FLog<SensitiveDetector>(__func__, "delete");
 }
