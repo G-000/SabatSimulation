@@ -116,14 +116,14 @@ G4VPhysicalVolume* DetectorConstruction::Construct() {
   G4ThreeVector targetPos =
       G4ThreeVector(0, 0, -geometry::sabat::targetSize / 2 - targetDeeps);
 
-  //  geometry::sabat::Target target(
-  //      targetPos, targetMaterial->GetName());  // Mother volume bottomVolume
-  //  target.setMaterial(targetMaterial);
-  //  const auto targetProp = target.getProperties();
-  //  //  auto targetGeom = geomFabric->createGeometryElement(targetProp,
-  //  //  logicBottom);
-  //  auto targetGeom = geomFabric->createGeometryElement(targetProp, logicEnv);
-  //  auto logicTarget = targetGeom->construct(checkOverlaps);
+  geometry::sabat::Target target(
+      targetPos, targetMaterial->GetName());  // Mother volume bottomVolume
+  target.setMaterial(targetMaterial);
+  const auto targetProp = target.getProperties();
+  //  auto targetGeom = geomFabric->createGeometryElement(targetProp,
+  //  logicBottom);
+  auto targetGeom = geomFabric->createGeometryElement(targetProp, logicEnv);
+  auto logicTarget = targetGeom->construct(checkOverlaps);
 
   // DetectorSD
   G4ThreeVector detectorPos =

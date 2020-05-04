@@ -92,8 +92,7 @@ static void FLog(const char *const &_func, const char *const &_log,
 namespace utils {
 
 constexpr auto _participalAmmount = 100000;
-constexpr int NOBINS = 1024 * 8;  // * 256 / 2;
-;
+constexpr int NOBINS = 1024 * 16;  // * 256 / 2;
 
 namespace material {
 
@@ -103,6 +102,7 @@ struct MaterialProperty {
   QMap<G4String, G4int> m_elList;
   G4double m_density;
 };
+
 }  // namespace material
 namespace sabat {
 static const G4String submarineName = "SabatSubmarine";

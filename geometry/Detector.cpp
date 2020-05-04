@@ -67,7 +67,7 @@ QVector<G4LogicalVolume *> CreateProtection::create(
   if (isSourceP) {
     tubsPos = m_position;
   }
-  ProtectionTube tube(0, geometry::sabat::dectorSize + 1. * cm,
+  ProtectionTube tube(0, geometry::sabat::detectorSizeR + 1. * cm,
                       tubeSizeZ - 1 * cm, "EnvTube", "G4_AIR", tubsPos,
                       utils::colours::cyan);
   const auto tubeProp = tube.getGeometryProperty();
@@ -75,7 +75,7 @@ QVector<G4LogicalVolume *> CreateProtection::create(
   tubeGeom->setRotation(m_rotMatrix);
   result << tubeGeom->construct(checkOverlaps);
 
-  G4double lastOuter = geometry::sabat::dectorSize + 1. * cm;
+  G4double lastOuter = geometry::sabat::detectorSizeR + 1. * cm;
 
   if (isSourceP) {
     auto tubeP = createTube(0, lastOuter, isSourceP);
@@ -83,8 +83,9 @@ QVector<G4LogicalVolume *> CreateProtection::create(
     return result;
   }
 
-  ProtectionSphere sphere(0, geometry::sabat::dectorSize + 1. * cm, "EnvSphere",
-                          "G4_AIR", m_position, utils::colours::cyan);
+  ProtectionSphere sphere(0, geometry::sabat::detectorSizeR + 1. * cm,
+                          "EnvSphere", "G4_AIR", m_position,
+                          utils::colours::cyan);
   const auto SphereProp = sphere.getGeometryProperty();
   auto sphereGeom = m_fabric->createGeometryElement(SphereProp, m_parent);
   sphereGeom->setRotation(m_rotMatrix);

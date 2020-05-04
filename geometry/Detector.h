@@ -9,10 +9,6 @@
 namespace geometry {
 
 namespace sabat {
-constexpr G4double tubePhiMin = 0;
-constexpr G4double tubePhiMax = 360.0 * deg;
-constexpr G4double sphereThetaMin = 0;
-constexpr G4double sphereThetaMax = 90. * deg;
 
 const G4double rotationTube =
     -atan(utils::sabat::sourceXPos / utils::sabat::sourceZpos);
