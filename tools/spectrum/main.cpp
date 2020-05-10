@@ -24,7 +24,7 @@ int main(int argc, char *argv[]) {
   const auto maxEnerg = 10;
   const auto partsAmout = 10;
 
-  const auto normalize = 25 * 4 * 3.1415 * pow(10, 6);
+  const auto normalize = 60 * 4 * 3.1415 * pow(10, 6);
 
   if (!QFile(fileName).exists()) {
     qDebug() << "File " << fileName << " not exist";
@@ -73,8 +73,8 @@ int main(int argc, char *argv[]) {
     const auto resFileName = QString(file_name_patter).arg(minE).arg(maxE);
     const auto filePath = QDir(dir).filePath(resFileName).toStdString();
     auto resFile = std::ofstream(filePath, std::ios::app);
-    resFile << std::setw(15) << it->first << " " << std::setw(15)
-            << it->second / normalize << std::setw(15) << '\n';
+    resFile << std::setw(15) << it->first << " " << std::setw(15) << it->second
+            << std::setw(15) << '\n';
     resFile.close();
     if (index == maxItem) {
       i++;

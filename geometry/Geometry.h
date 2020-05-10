@@ -51,8 +51,8 @@ class Bottom : public GeomProp {
  private:
 };
 
-constexpr G4double detectorSizeR = 2. * cm;
-constexpr G4double detectorSizeZ = 3. * cm;
+constexpr G4double detectorSizeR = 3.3 * cm;
+constexpr G4double detectorSizeZ = 2.853 * cm;
 
 class DetectorSD : public GeomProp {
  public:

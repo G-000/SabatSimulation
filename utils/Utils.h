@@ -103,6 +103,27 @@ struct MaterialProperty {
   G4double m_density;
 };
 
+struct Au_mineral : public MaterialProperty {
+  Au_mineral() {
+    m_chemicalFormula = "Аg3AuS2";
+    m_name = "AuMineral";
+    m_elList["Ag"] = 3;
+    m_elList["Au"] = 1;
+    m_elList["S"] = 2;
+    m_density = 9.22 * g / cm3;
+  }
+};
+struct Cu_mineral : public MaterialProperty {
+  Cu_mineral() {
+    m_chemicalFormula = "CuFeS2";
+    m_name = "CuMineral";
+    m_elList["Cu"] = 1;
+    m_elList["Fe"] = 1;
+    m_elList["S"] = 2;
+    m_density = 4.3 * g / cm3;
+  }
+};
+
 }  // namespace material
 namespace sabat {
 static const G4String submarineName = "SabatSubmarine";

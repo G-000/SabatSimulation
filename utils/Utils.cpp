@@ -105,6 +105,7 @@ G4Material *Utils::materialCreator(G4NistManager *nist,
   material->SetChemicalFormula(mProp.m_chemicalFormula);
   const auto elList = mProp.m_elList;
   for (auto it = elList.constBegin(); it != elList.constEnd(); ++it) {
+    auto key = it.key();
     auto prEl = nist->FindOrBuildElement(it.key());
     if (!prEl) {
       LogInfo::FLog<Utils>(__func__, "element do not find",

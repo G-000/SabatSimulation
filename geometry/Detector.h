@@ -58,7 +58,7 @@ class CreateProtection {
   const QVector<G4String> m_names = {"First", "Second", "Third"};
   const QVector<G4double> m_sizes = {1. * cm, 5. * cm, 2. * cm};
   const QVector<G4Colour> m_colours = {
-      utils::colours::brown, utils::colours::cyan, utils::colours::lgrey};
+      utils::colours::red, utils::colours::yellow, utils::colours::lgreen};
 };
 
 namespace detector {

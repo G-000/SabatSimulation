@@ -86,6 +86,7 @@ QVector<G4LogicalVolume *> CreateProtection::create(
   ProtectionSphere sphere(0, geometry::sabat::detectorSizeR + 1. * cm,
                           "EnvSphere", "G4_AIR", m_position,
                           utils::colours::cyan);
+
   const auto SphereProp = sphere.getGeometryProperty();
   auto sphereGeom = m_fabric->createGeometryElement(SphereProp, m_parent);
   sphereGeom->setRotation(m_rotMatrix);
@@ -123,18 +124,8 @@ G4LogicalVolume *CreateProtection::createTube(const int index,
 G4LogicalVolume *CreateProtection::createSphere(const int index,
                                                 G4double &lastOuter) const {
   const auto innerR = lastOuter;
-  const auto outerR = lastOuter + (index + 1) * tubeDeepth;
-  //  auto tempRot = new G4RotationMatrix;
-  //  G4ThreeVector position;
-  //  if (m_rotMatrix == tempRot) {
-  //    position = m_position;
-  //  } else {
-  //    const auto alpha = geometry::sabat::rotationTube;
-  //    position.setX(position.x() +
-  //                  utils::sabat::sourceZpos * sin(alpha) * cos(alpha));
-  //    position.setZ(position.z() -
-  //                  utils::sabat::sourceZpos * sin(alpha) * tan(alpha));
-  //  }
+  const auto outerR = innerR + m_sizes.at(index);
+
   ProtectionSphere sphere(innerR, outerR, m_names.at(index) + "Sphere",
                           m_materials.at(index), m_position,
                           m_colours.at(index));

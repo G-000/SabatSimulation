@@ -108,6 +108,13 @@ G4VPhysicalVolume* DetectorConstruction::Construct() {
   G4Material* targetMaterial =
       utils::Utils::MustardGas(nist);  // custom material
 
+  utils::material::Au_mineral materialProp = utils::material::Au_mineral();
+
+  //  utils::material::Cu_mineral materialProp = utils::material::Cu_mineral();
+
+  //  G4Material* targetMaterial =
+  //      utils::Utils::materialCreator(nist, materialProp);  // custom material
+
   //  G4ThreeVector targetPos =
   //      G4ThreeVector(0, 0,
   //                    geometry::sabat::bottomSize / 2 -
